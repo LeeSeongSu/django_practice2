@@ -1,0 +1,18 @@
+<script id="iamport-script">
+    $(function () {
+        var params = {{ json_fields }};
+
+        IMP.init("{{ iamport_shop_id }}");
+        IMP.request_pay(params, function(response_data){
+            if (! response_data.success ) {
+                alert(response_data.error_msg + "(" + response_data.error_code + ")");
+                location.href = '{ url "shop:index" }';
+            }
+            var $form = $("#iamport-script").closest("form");
+            $.each(response_data, function(key, value) {
+                $form.find("input[name=" + key + "]").val(value);
+            });
+            $form.submit();
+        });
+    });
+</script>

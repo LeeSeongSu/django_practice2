@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% load humanize %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>{{ user }}의 프로필</h2>
+                <hr>
+
+                <h3>구매내역</h3>
+                <table class="table table-hover table=bordered">
+                    <thead>
+                    <tr>
+                        <th>상품명</th>
+                        <th>상품가격</th>
+                        <th>처리결과</th>
+                        <th>결과일시</th>
+                        <th>영수증</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in order_list %}
+                        <tr>
+                            <td>{{ order.name }}</td>
+                            <td>{{ order.amount_html }}</td>
+                            <td>{{ order.status_html }}</td>
+                            <td>{{ order.paid_at|default:"-" }}</td>
+                            <td>{{ order.receipt_link|default:"-" }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
