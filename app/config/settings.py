@@ -30,7 +30,9 @@ IAMPORT_SECRET_KEY = 'k28K0nkm098hSlkFuQ7U6yaCLMX0pR9JUhuVFOiGYqXQLiwg8DbeclRX7P
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'ec2-52-79-165-191.ap-northeast-2.compute.amazonaws.com'
+]
 
 
 # Application definition
